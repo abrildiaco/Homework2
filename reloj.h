@@ -11,10 +11,10 @@ class Reloj{
         int horas;
         int minutos;
         int segundos;
-        string pm_am;
+        std::string pm_am;
 
     public:
-        Reloj (int,  int, int, string);
+        Reloj (int,  int, int, std::string);
         
         void ShowReloj();
         void ShowHoras();
@@ -25,7 +25,7 @@ class Reloj{
         void CambiarHoras(int);
         void CambiarMinutos(int);
         void CambiarSegundos(int);
-        void CambiarPmAm(int);
+        void CambiarPmAm(std::string);
 
-        void Show24();
-}
+        //void Show24();
+};

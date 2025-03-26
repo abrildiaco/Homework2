@@ -1,31 +1,33 @@
 #include "reloj.h"
 #include <iomanip>
 #include <iostream>
-using namespace std
+#include <string>
+using namespace std;
 
-
-Reloj::Reloj (int HH = 0,  int MM = 0, int SS = 0, string PmAm = "a.m.")
+Reloj::Reloj(int HH = 0,  int MM = 0, int SS = 0, string PmAm = "a.m.")
         : horas{HH}, minutos{MM}, segundos{SS}, pm_am{PmAm} {
 
             if(HH < 0 || HH >12){
                 cout<<"Hora fuera del rango horario"<<endl;
             }
-            elif(MM < 0 || MM >60){
+            else if(MM < 0 || MM >60){
                 cout<<"Hora fuera del rango horario"<<endl;
             }
-            elif(SS < 0 || SS >60){
+            else if(SS < 0 || SS >60){
                 cout<<"Hora fuera del rango horario"<<endl;
             }
         }
-        void ShowReloj();
-        void ShowHoras();
-        void ShowMinutos();
-        void ShowSegundos();
-        void ShowPmAm();
 
-        void CambiarHoras(int);
-        void CambiarMinutos(int);
-        void CambiarSegundos(int);
-        void CambiarPmAm(int);
+        //03h, 14m, 42s p.m.
+void Reloj::ShowReloj(){cout<< horas <<"h, "<< minutos <<"m, "<< segundos <<"s, "<<pm_am<<endl;}
+void Reloj::ShowHoras(){cout<< horas <<"h, "<<endl;}
+void Reloj::ShowMinutos(){cout<< minutos <<"m, "<<endl;}
+void Reloj::ShowSegundos(){cout<< segundos <<"s, "<<endl;}
+void Reloj::ShowPmAm(){cout<< pm_am <<endl;}
 
-        void Show24();
+void CambiarHoras(int HH){horas = HH;}
+void CambiarMinutos(int MM){minutos = MM;}
+void CambiarSegundos(int SS){segundos = SS;}
+void CambiarPmAm(string PmAm){pm_am = PmAm;}
+
+//void Show24();
