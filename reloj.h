@@ -5,15 +5,27 @@
 #pragma once
 #include <string>
 
+
 class Reloj{
     private:
         int horas;
         int minutos;
         int segundos;
-        bool pm_am;
+        string pm_am;
 
     public:
-        Reloj (int h,  int m, int s, string )
-            : horas {h}, minutos {m}, segundos {s}
+        Reloj (int,  int, int, string);
         
+        void ShowReloj();
+        void ShowHoras();
+        void ShowMinutos();
+        void ShowSegundos();
+        void ShowPmAm();
+
+        void CambiarHoras(int);
+        void CambiarMinutos(int);
+        void CambiarSegundos(int);
+        void CambiarPmAm(int);
+
+        void Show24();
 }
