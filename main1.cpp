@@ -5,6 +5,7 @@ using namespace std;
 //g++ -std=c++20 main1.cpp reloj.cpp -o main1
 
 int main() {
+    
     int HH, MM, SS;
     string PmAm ;
     
@@ -22,50 +23,102 @@ int main() {
     try{
         
         //Inicialización sin argumentos
-        if(opcion == 1) Reloj MiReloj;
+        if(opcion == 1) {
+            string continuar = "si";
+
+            while(continuar ==  "si"){
+                Reloj MiReloj;
+                
+                catch (const exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n ¿Desea volver a intentarlo? [si/no]"
+                    cin >> continuar;
+                    if (continuar == "no") return 1;
+                    continue;
+                }
+                MenuMetodos(MiReloj);
+                continuar = "no";
+                }
+                
+            }
+        }
         
         //Inicialización solo con la hora
         else if(opcion == 2){
+            string continuar = "si";
+            
+            while(continuar ==  "si"){
+                int HH;
+                cout<<"Ingrese una hora (0-12)"<<endl;
+                cin>> HH;
 
-            int HH;
-            cout<<"Ingrese una hora (0-12)"<<endl;
-            cin>> HH;
-
-            Reloj MiReloj(HH);
-
+                Reloj MiReloj(HH);
+                catch (const exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n ¿Desea volver a intentarlo? [si/no]"
+                    cin >> continuar;
+                    if (continuar == "no") return 1;
+                    continue;
+                }
+                continuar = "no";
+            }
+            MenuMetodos(MiReloj);
         } 
 
         //Inicialización con la hora y los minutos
         else if(opcion == 3){
+            string continuar = "si";
+            
+            while(continuar ==  "si"){
+                int HH;
+                cout<<"Ingrese una hora (0-12)"<<endl;
+                cin>> HH;
 
-            int HH;
-            cout<<"Ingrese una hora (0-12)"<<endl;
-            cin>> HH;
+                int MM;
+                cout<<"Ingrese los minutos (0-59)"<<endl;
+                cin>> MM;
 
-            int MM;
-            cout<<"Ingrese los minutos (0-59)"<<endl;
-            cin>> MM;
-
-            Reloj MiReloj(HH, MM);
+                Reloj MiReloj(HH, MM);
+                catch (const exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n ¿Desea volver a intentarlo? [si/no]"
+                    cin >> continuar;
+                    continue;
+                    if (continuar == "no") return 1;
+                    continue;
+                }
+                continuar = "no";
+            }
+            MenuMetodos(MiReloj);
 
         } 
 
         //Inicialización con la hora, minutos y segundos
         else if(opcion == 4){
+            string continuar = "si";
+            
+            while(continuar ==  "si"){
+                int HH;
+                cout<<"Ingrese una hora (0-12)"<<endl;
+                cin>> HH;
 
-            int HH;
-            cout<<"Ingrese una hora (0-12)"<<endl;
-            cin>> HH;
+                int MM;
+                cout<<"Ingrese los minutos (0-59)"<<endl;
+                cin>> MM;
 
-            int MM;
-            cout<<"Ingrese los minutos (0-59)"<<endl;
-            cin>> MM;
+                int SS;
+                cout<<"Ingrese los segundos (0-59)"<<endl;
+                cin>> SS;
 
-            int SS;
-            cout<<"Ingrese los segundos (0-59)"<<endl;
-            cin>> SS;
-
-            Reloj MiReloj(HH, MM, SS);
+                Reloj MiReloj(HH, MM, SS);
+                catch (const exception& e) {
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n ¿Desea volver a intentarlo? [si/no]"
+                    cin >> continuar;
+                    if (continuar == "no") return 1;
+                }            }
+            
+            MenuMetodos(MiReloj);
 
         } 
 
@@ -89,25 +142,18 @@ int main() {
             cin>> PmAm;        
 
             Reloj MiReloj(HH, MM, SS, PmAm);
-
-            cout<<"Reloj inicializado: "; MiReloj.ShowReloj();
+            MenuMetodos(MiReloj);
         }
         else{
             cout<<"No se encontró la opción. Vuelve a intentarlo"<<endl;
             return 1;
         }
         
-        
-    }catch (const exception& e) {
-        cout << "Error: " << e.what() << " Inténtelo nuevamente." << endl;
-        return 1;;
+
     }
-
-
     return 0;
-}
     
-
+}
     
 //    //Inicialización sin argumentos
 //    Reloj MiReloj_0;

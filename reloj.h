@@ -31,3 +31,5 @@ class Reloj{
 
         void Show24();
 };
+
+void MenuMetodos(Reloj&);
