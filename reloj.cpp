@@ -185,13 +185,15 @@ void Reloj::Show24(){
     }
 }
 
+//Definición de función para poner a prueba los métodos
+
 void MenuMetodos(Reloj &MiReloj){
     
     int opcion =1;
     
     cout<<"\n¿Que acción desea realizar? (presione 0 para salir)"<<endl;
     while (opcion != 0){
-        cout<<"1 - Mstrar el reloj"<<endl;
+        cout<<"1 - Mostrar el reloj"<<endl;
         cout<<"2 - Mostrar solo la hora"<<endl;
         cout<<"3 - Mostrar solo los minutos" <<endl;
         cout<<"4 - Mostrar solo los segundos"<<endl;
@@ -209,44 +211,118 @@ void MenuMetodos(Reloj &MiReloj){
             cout <<"Programa terminado"<<endl;
             return;
         }
+        
         else if (opcion == 1) MiReloj.ShowReloj();
         else if (opcion == 2)  MiReloj.ShowHoras();
         else if (opcion==3) MiReloj.ShowMinutos();
         else if (opcion==4) MiReloj.ShowSegundos();
         else if (opcion==5) MiReloj.ShowPmAm();
+        
         else if (opcion == 6) {
 
-            int HH;
-            cout<<"Ingrese la nueva Hora: ";
-            cin>> HH;
-            cin.ignore();
-            MiReloj.CambiarHoras(HH);
+            string continuar = "si";
 
+            while (continuar == "si"){
+
+                int HH;
+                cout<<"Ingrese la nueva Hora: ";
+                cin>> HH;
+                cin.ignore();
+                
+                try{
+                MiReloj.CambiarHoras(HH);
+                }
+                
+                catch (const exception& e) {
+                
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n¿Desea volver a intentarlo? [si/no]";
+                    cin >> continuar;
+                    if (continuar == "no") return;
+                    
+                    continue;
+                }
+                continuar = "no";
+                
+            }
         }
         else if (opcion == 7) {
 
-            int MM;
-            cout<<"Ingrese los nuevos minutos: ";
-            cin>> MM;
-            cin.ignore();
-            MiReloj.CambiarMinutos(MM);
+            string continuar = "si";
+
+            while (continuar == "si"){
+                
+                int MM;
+                cout<<"Ingrese los nuevos minutos: ";
+                cin>> MM;
+                cin.ignore();
+                
+                try{
+                MiReloj.CambiarMinutos(MM);
+                }
+                catch (const exception& e) {
+                
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n¿Desea volver a intentarlo? [si/no]";
+                    cin >> continuar;
+                    if (continuar == "no") return;
+                    
+                    continue;
+                }
+                continuar = "no";
+            }
+
 
         }
         else if (opcion == 8) {
 
-            int SS;
-            cout<<"Ingrese los nuevos segundos: ";
-            cin>> SS;
-            cin.ignore();
-            MiReloj.CambiarSegundos(SS);
-
+            string continuar = "si";
+            
+            while (continuar == "si"){
+                
+                int SS;
+                cout<<"Ingrese los nuevos segundos: ";
+                cin>> SS;
+                cin.ignore();
+                
+                try{
+                MiReloj.CambiarSegundos(SS);
+                }
+                catch (const exception& e) {
+                
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n¿Desea volver a intentarlo? [si/no]";
+                    cin >> continuar;
+                    if (continuar == "no") return;
+                    
+                    continue;
+                }
+                continuar = "no";
+            }
         }
         else if (opcion == 9) {
 
-            string PmAm;
-            cout<<"Ingrese el nuevo período (a.m./p.m.) ";
-            cin>> PmAm;
-            MiReloj.CambiarPmAm(PmAm);
+            string continuar = "si";
+            
+            while (continuar == "si"){
+                string PmAm;
+                cout<<"Ingrese el nuevo período (a.m./p.m.) ";
+                cin>> PmAm;
+                
+                try{
+                MiReloj.CambiarPmAm(PmAm);
+                }
+                catch (const exception& e) {
+                
+                    cout << "Error: " << e.what() << endl;
+                    cout<<"\n ¿Desea volver a intentarlo? [si/no]";
+                    cin >> continuar;
+                    if (continuar == "no") return;
+                    
+                    continue;
+                }
+                continuar = "no";
+            }
 
         }
         else if(opcion == 10) MiReloj.Show24();
