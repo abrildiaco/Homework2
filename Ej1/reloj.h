@@ -12,24 +12,24 @@ class Reloj{
 
     public:
         
-    Reloj();
+        Reloj();
         Reloj(int);
         Reloj(int, int);
         Reloj(int, int, int);
         Reloj (int,  int, int, std::string);
         
-        void ShowReloj();
-        void ShowHoras();
-        void ShowMinutos();
-        void ShowSegundos();
-        void ShowPmAm();
+        void ShowReloj()const; //el uso de const significa que es un método que no modifica el estado de un objeto
+        void ShowHoras()const;
+        void ShowMinutos()const;
+        void ShowSegundos()const;
+        void ShowPmAm()const;
 
         void CambiarHoras(int);
         void CambiarMinutos(int);
         void CambiarSegundos(int);
         void CambiarPmAm(std::string);
 
-        void Show24();
+        void Show24()const;
 };
 
 void MenuMetodos(Reloj&);

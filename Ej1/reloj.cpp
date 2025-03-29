@@ -112,7 +112,7 @@ Reloj::Reloj(int HH,  int MM, int SS, string PmAm)
 
 //Definición de métodos
 
-void Reloj::ShowReloj(){
+void Reloj::ShowReloj()const{
     
     //con swet me aseguro que se muestren dos dígitos, y con Setfil me aseguro 
     //que aquellos lugares vacíos se rellenen con 0
@@ -122,10 +122,10 @@ void Reloj::ShowReloj(){
     <<pm_am<<endl;
 }
 
-void Reloj::ShowHoras(){cout << setw(2) << setfill('0') << horas <<"h"<<endl;}
-void Reloj::ShowMinutos(){cout << setw(2) << setfill('0') << minutos <<"m"<<endl;}
-void Reloj::ShowSegundos(){cout << setw(2) << setfill('0') << segundos <<"s"<<endl;}
-void Reloj::ShowPmAm(){cout<< pm_am <<endl;}
+void Reloj::ShowHoras()const{cout << setw(2) << setfill('0') << horas <<"h"<<endl;}
+void Reloj::ShowMinutos()const{cout << setw(2) << setfill('0') << minutos <<"m"<<endl;}
+void Reloj::ShowSegundos()const{cout << setw(2) << setfill('0') << segundos <<"s"<<endl;}
+void Reloj::ShowPmAm()const{cout<< pm_am <<endl;}
 
 void Reloj::CambiarHoras(int HH){//aunque horas sea un atributo private, lo puedo cambiar ya que lo estoy
                                 //haciendo dentro de la propia clase
@@ -169,7 +169,7 @@ void Reloj::CambiarPmAm(string PmAm){
     pm_am = PmAm;
 }
 
-void Reloj::Show24(){
+void Reloj::Show24()const{
     
     if (pm_am == "p.m."){ //si mi hora es después del mediodía, le sumo 12 para pasarla al formato 24hs
         cout << setw(2) << setfill('0') << horas+12 <<"hs, "
