@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <memory>
+
 using namespace std;
 
 //CLASE ESTIDIANTE    
@@ -25,12 +28,12 @@ const double Estudiante::getLegajo()const{
 float Estudiante::getPromedioGeneral()const{
     if(notas.empty()) return 0.0;
     
-    float suma;
-    q_notas = notas.size();
+    float suma = 0;
+    int q_notas = notas.size();
     
-    for(const float nota: notas) suma = suma + nota[1];
+    for(const float nota: notas) suma = suma + nota.second;
 
-    promedio = suma/q_notas
+    float promedio = suma/q_notas;
     return promedio;
 }
 
@@ -39,37 +42,38 @@ void Estudiante::AgregarNota(const std::string& nombre_curso, float nota){
     return;
 }
 
+bool operator>(const Estudiante& otro) const {
+    
+    return this->nombre_completo > otro.nombre_completo;
+}
+
+ostream& operator<<(ostream& os, const Estudiante& alumno){
+    os << alumno.nombre_completo<<"\n";
+    return os;
+}
+
 
 //CLASE CURSO
-
-/*
-      Curso(int);
-      ~Curso();
-      void InscribirAlumno(Estudiante);
-      void DesinscribirAlumno(Estudiante);
-      bool VerInscripto(double);
-      bool Completo();
-      void ImprimirEstudiantes();
-      void CopiarCurso();
-
-*/
 
 //Constructor
 
 Curso::Curso(string curso)
     :capacidad{0}, nombre_curso{curso}{}
 
-//Destructor
-    
-Curso::~Curso(){
-    for(shared_ptr<estudiante> estudiante: estudiantes){
-        if (!estudiante) return;
+//Deep copy constructor
 
-        delete estudiante;
-    }
-    cout<<"El curso "<< nombre_curso<<" fue eliminado"<<endl;
-}
-    
+Curso::Curso(const Curso& original) // Deep copy de engine
+        :capacidad{original.capacidad}, nombre_curso{original.nombre_curso}{}
+
+        /*
+hago uso de un deep copy constructor pues se trata de la copia de un objeto que contiene punteros.
+Lo que hice fue hacer una sobrecarga de constructores en la cual, si a un constructor se le pasa un objeto de
+la misma clase, creara un objeto nuevo con sus mismo atributos. Mas adelante, en la funcion CopiarCurso,
+se inscribió a cada alumno de la clase original a la clase copia. Asi, obtuve dos objetos con los
+mismos atributos, pero distintos en si.
+*/
+
+
 //Definción de métodos
 
 void Curso::getNombreCurso(){
@@ -77,21 +81,68 @@ void Curso::getNombreCurso(){
 }
 
 void Curso::InscribirAlumno(Estudiante alumno){
-    shared_ptr<Estudiante> nuevo_alumnno = make_shared(alumno);
+    if(capacidad == 20){
+        cout<<"El curso "<<nombre_curso<<" no tiene más capacidad";
+        return;
+    }
+    
+    make_shared<Estudiante>(alumno);
     estudiantes.push_back(nuevo_alumno);
+    capacidad++;
+    
     cout<<"El alumno "<<alumno.getNombreCompleto()<<" fue inscripto al curso"<<endl;
+    
     return;
 }
 
 void Curso::DesinscribirAlumno(Estudiante alumno){
+    int pos=0;
     for(shared_ptr<Estudiante> estudiante: estudiantes){
-        if (estudiante.legajo == alumno.legajo){
-            estudiantes.erase(estudiante);
+        if (estudiante.getLegajo() == alumno.legajo){
+            
+            estudiantes.erase(pos);
             cout<<"Alumno "<<alumno.getNombreCompleto()<<" eliminado del curso"<<endl;
+            
+            capacidad --;
+            
             return;
         }
+        pos ++;
     
     }
     cout<<"No se encontró el alumno"<<endl;
 }  
 
+bool Curso::VerInscripto(const double legajo_alumno){
+    
+    for(shared_ptr<Estudiante> estudiante: estudiantes){
+        if (estudiante.legajo == legajo_alumno) return true;
+    }
+    
+    return false;
+}
+
+bool Curso::Completo(){
+    return capacidad >= 20;
+}
+
+
+void Curso::ImprimirEstudiantes(){
+    //funcion lambda que compara que estudiante va antes en el alfabeto
+    auto funcion_comparar = [](const shared_ptr<Estudiante>& estudiante1, const shared_ptr<Estudiante>& estudiante2)->bool {
+        return *estudiante1 > *estudiante2; //hice uso de la sobreescritura del operador <
+    };
+    
+    sort(estudiantes.begin(), estudiantes.end(), funcion_comparar); //ordena el vector de principio a fin en orden alfabetico
+    
+    for (shared_ptr<Estudiante> &estudiante: estudiantes ) cout << *estudiante;
+}
+
+Curso CopiarCurso(const Curso &original){
+    Curso copia = original;  // Deep copy usando copy constructor
+    for (auto &estudiante: original.estudiantes ) {
+        copia.InscribirAlumno(*estudiante);
+    }
+
+    return copia;
+}

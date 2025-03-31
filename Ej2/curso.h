@@ -3,39 +3,44 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
 class Estudiante{
     private:
-       const std::string nombre_completo;
-       const double legajo;
-       std::vector<pair<string, const float>> notas; //vector que contiene pares (curso, nota final)
+      const std::string nombre_completo;
+      const double legajo;
+      std::vector<pair<std::string, const float>> notas; //vector que contiene pares (curso, nota final)
     
     public:
-       Estudiante(std::string, const double);
-       
-       std::string getNombreCompleto()const;
-       const double getLegajo()const;
-       float getPromedioGeneral()const;
+      Estudiante(std::string, const double);
+      
+      std::string getNombreCompleto()const;
+      const double getLegajo()const;
+      float getPromedioGeneral()const;
+      
+      void AgregarNota(const std::string&, float);
 
-       void AgregarNota(const std::string&, float);
+      friend bool operator>(const Estudiante&) const;
+      friend ostream& operator<<(ostream&, const Estudiante&);
 
 };
 
 class Curso{
    private:
-      const string nombre_curso;
+      const std::string nombre_curso;
       int capacidad;
-      std::vector<std::shared_ptr<estudiante>> estudiantes; //como los cursos comparten estudiantes, los cursos pueden apuntar a loa mismos estudiantes
+      std::vector<std::shared_ptr<Estudiante>> estudiantes; //como los cursos comparten estudiantes, los cursos pueden apuntar a loa mismos estudiantes
    
    public:   
       Curso(const std::string&);
-      ~Curso();
+      Curso(const Curso&);
       void getNombreCurso();
-      void InscribirAlumno(Estudiante);
-      void DesinscribirAlumno(Estudiante);
-      bool VerInscripto(double) const;
+      void InscribirAlumno(const Estudiante&);
+      void DesinscribirAlumno(const Estudiante$);
+      bool VerInscripto(const double) const;
       bool Completo()const;
-      void ImprimirEstudiantes()const;
-      void CopiarCurso();
+      void ImprimirEstudiantes();
+      Curso CopiarCurso(const Curso&);
 
+   friend class Estudiante;
 };
