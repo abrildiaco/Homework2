@@ -42,13 +42,13 @@ void Estudiante::AgregarNota(const std::string& nombre_curso, float nota){
     return;
 }
 
-bool operator>(const Estudiante& otro) const {
+bool operator<(const Estudiante& otro) const {
     
-    return this->nombre_completo > otro.nombre_completo;
+    return this->nombre_completo < otro.nombre_completo;
 }
 
 ostream& operator<<(ostream& os, const Estudiante& alumno){
-    os << alumno.nombre_completo<<"\n";
+    os << alumno.getNombreCompleto()<<"\n";
     return os;
 }
 
@@ -80,14 +80,13 @@ void Curso::getNombreCurso(){
     return nombre_curso;
 }
 
-void Curso::InscribirAlumno(Estudiante alumno){
+void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno){
     if(capacidad == 20){
         cout<<"El curso "<<nombre_curso<<" no tiene más capacidad";
         return;
     }
     
-    make_shared<Estudiante>(alumno);
-    estudiantes.push_back(nuevo_alumno);
+    estudiantes.push_back(alumno);
     capacidad++;
     
     cout<<"El alumno "<<alumno.getNombreCompleto()<<" fue inscripto al curso"<<endl;
@@ -130,7 +129,7 @@ bool Curso::Completo(){
 void Curso::ImprimirEstudiantes(){
     //funcion lambda que compara que estudiante va antes en el alfabeto
     auto funcion_comparar = [](const shared_ptr<Estudiante>& estudiante1, const shared_ptr<Estudiante>& estudiante2)->bool {
-        return *estudiante1 > *estudiante2; //hice uso de la sobreescritura del operador <
+        return *estudiante1 < *estudiante2; //hice uso de la sobreescritura del operador <
     };
     
     sort(estudiantes.begin(), estudiantes.end(), funcion_comparar); //ordena el vector de principio a fin en orden alfabetico
@@ -138,7 +137,7 @@ void Curso::ImprimirEstudiantes(){
     for (shared_ptr<Estudiante> &estudiante: estudiantes ) cout << *estudiante;
 }
 
-Curso CopiarCurso(const Curso &original){
+Curso Curso::CopiarCurso(const Curso &original){
     Curso copia = original;  // Deep copy usando copy constructor
     for (auto &estudiante: original.estudiantes ) {
         copia.InscribirAlumno(*estudiante);

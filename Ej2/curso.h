@@ -9,7 +9,7 @@ class Estudiante{
     private:
       const std::string nombre_completo;
       const double legajo;
-      std::vector<pair<std::string, const float>> notas; //vector que contiene pares (curso, nota final)
+      std::vector<std::pair<std::string, const float>> notas; //vector que contiene pares (curso, nota final)
     
     public:
       Estudiante(std::string, const double);
@@ -20,7 +20,7 @@ class Estudiante{
       
       void AgregarNota(const std::string&, float);
 
-      friend bool operator>(const Estudiante&) const;
+      friend bool operator<(const Estudiante&);
       friend ostream& operator<<(ostream&, const Estudiante&);
 
 };
@@ -35,8 +35,8 @@ class Curso{
       Curso(const std::string&);
       Curso(const Curso&);
       void getNombreCurso();
-      void InscribirAlumno(const Estudiante&);
-      void DesinscribirAlumno(const Estudiante$);
+      void InscribirAlumno(const shared_ptr<Estudiante>&);
+      void DesinscribirAlumno(const Estudiante&);
       bool VerInscripto(const double) const;
       bool Completo()const;
       void ImprimirEstudiantes();
