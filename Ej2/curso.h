@@ -20,8 +20,8 @@ class Estudiante{
       
       void AgregarNota(const std::string&, float);
 
-      friend bool operator<(const Estudiante&);
-      friend ostream& operator<<(ostream&, const Estudiante&);
+      bool operator<(const std::shared_ptr<Estudiante>&);
+      friend std::ostream& operator<<(std::ostream&, const std::shared_ptr<Estudiante>&);
 
 };
 
@@ -34,11 +34,11 @@ class Curso{
    public:   
       Curso(const std::string&);
       Curso(const Curso&);
-      void getNombreCurso();
-      void InscribirAlumno(const shared_ptr<Estudiante>&);
+      std::string getNombreCurso();
+      void InscribirAlumno(std::shared_ptr<Estudiante>&);
       void DesinscribirAlumno(const Estudiante&);
       bool VerInscripto(const double) const;
-      bool Completo()const;
+      bool isCompleto()const;
       void ImprimirEstudiantes();
       Curso CopiarCurso(const Curso&);
 
