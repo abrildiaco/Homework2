@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <memory>
@@ -20,7 +19,7 @@ class Estudiante{
       
       void AgregarNota(const std::string&, float);
 
-      bool operator<(const std::shared_ptr<Estudiante>&);
+      bool operator<(const Estudiante&);
       friend std::ostream& operator<<(std::ostream&, const std::shared_ptr<Estudiante>&);
 
 };
@@ -36,11 +35,9 @@ class Curso{
       Curso(const Curso&);
       std::string getNombreCurso();
       void InscribirAlumno(std::shared_ptr<Estudiante>&);
-      void DesinscribirAlumno(const Estudiante&);
-      bool VerInscripto(const double) const;
+      void DesinscribirAlumno(std::shared_ptr<Estudiante>&);
+      bool isInscripto(const double) const;
       bool isCompleto()const;
       void ImprimirEstudiantes();
-      Curso CopiarCurso(const Curso&);
 
-   friend class Estudiante;
 };

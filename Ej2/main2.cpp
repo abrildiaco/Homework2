@@ -17,12 +17,22 @@ int main() {
     curso.InscribirAlumno(e2);
     curso.InscribirAlumno(e3);
 
+
     cout << "Lista de estudiantes en orden alfabético:\n";
     curso.ImprimirEstudiantes();
+    curso.DesinscribirAlumno(e1);
 
-    //Curso cursoCopia = CopiarCurso(curso);
-    cout << "\nLista de estudiantes en la copia del curso:\n";
     curso.ImprimirEstudiantes();
+
+    cout<< curso.isInscripto(102)<<endl;
+    cout<< curso.isInscripto(1)<<curso.isCompleto()<<endl;
+
+    e1->AgregarNota("paradigmas", 10);
+    e1->AgregarNota("ciencias", 8);
+    e1->AgregarNota("ciencias", 10);
+    cout<<e1->getPromedioGeneral()<<endl;
+
+    Curso curso2 = curso;
 
     return 0;
 }
