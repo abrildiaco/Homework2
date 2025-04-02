@@ -28,7 +28,7 @@ class Curso{
    private:
       const std::string nombre_curso;
       int capacidad;
-      std::vector<std::shared_ptr<Estudiante>> estudiantes; //como los cursos comparten estudiantes, los cursos pueden apuntar a loa mismos estudiantes
+      std::vector<std::shared_ptr<Estudiante>> estudiantes;
    
    public:   
       Curso(const std::string&);
@@ -41,3 +41,10 @@ class Curso{
       void ImprimirEstudiantes();
 
 };
+
+/*
+El tipo de relacion entre curso y estudiante es agregación. El surso no es dueño del estudiante, o viceversa.
+Es más, el curso no contiene estudiantes, sino punteros a ellos. Tambien, tienen ciclos de vida separados,
+ninguno sepende del otro: si el curso desaparece, los alumnos pueden buscar un nuevo curso, y si pasa al reves,
+...
+*/

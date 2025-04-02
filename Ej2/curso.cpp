@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//CLASE ESTIDIANTE    
+//CLASE ESTUDIANTE    
 
 //constructor
 
@@ -76,9 +76,9 @@ Curso::Curso(const Curso& original)
 /*
 hago uso de un deep copy constructor pues se trata de la copia de un objeto que contiene punteros.
 Lo que hice fue hacer una sobrecarga de constructores en la cual, si a un constructor se le pasa un objeto de
-la misma clase, creara un objeto nuevo con sus mismo atributos. Mas adelante, en la funcion CopiarCurso,
-se inscribió a cada alumno de la clase original a la clase copia. Asi, obtuve dos objetos con los
-mismos atributos, pero distintos en si.
+la misma clase, creara un objeto nuevo con sus mismo atributos. Asi, obtuve dos objetos con los
+mismos atributos, pero distintos en si. Es importante observar, qu etambien se crearon nuevos punteros a alumnos,
+de no ser asi, si elimino un alumno de un curso, tambien se eliminaría del otro
 */
 
 
