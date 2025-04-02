@@ -5,7 +5,7 @@
 using namespace std;
 
 //constructor
-Complejo::Complejo(double UnComplejo, double UnImaginario)
+Complejo::Complejo(double UnComplejo, double UnImaginario = 0)
     : real(UnComplejo), imaginario(UnImaginario) {}
 
 
