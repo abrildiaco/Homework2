@@ -16,26 +16,29 @@ using namespace std;
 //constructor
 
 CuentaCorriente::CuentaCorriente(string &Titular, CajaDeAhorro* caja)
-    :titularCuenta(Titular), fondos(0), cajaAhorro(caja) {}
+    :CuentaBanco::CuentaBanco(Titular), cajaAhorro(caja) {}
 
 
 //definición de metodos
 
-void CuentaCorriente::Depositar(double &dinero_depositar){
-    fondo += dinero_depositar;
+void CuentaCorriente::Depositar(int &dinero_depositar){
+    fondos += dinero_depositar;
     cout<<"Dinero depositado exitosamente"<<endl;
     return;
 }
 
-double CuentaCorriente::Retirar(double& dinero_retirar){
+int CuentaCorriente::Retirar(int& dinero_retirar){
     if(dinero_retirar > fondos){
         fondos -= fondos;
-        double retirados_ahorro = cajaAhorro->Retirar(dinero_retirar-fondos);
+        int retiro_ahorro = dinero_retirar-fondos;
+        int retirados_ahorro = cajaAhorro->Retirar(retiro_ahorro);
+
+        cout<<"se han retirado fondos de la caja de ahorro"<<endl;
 
         return dinero_retirar;
     }
     
-    balance -= dinero_retirar;
+    fondos -= dinero_retirar;
     return dinero_retirar;
 }
 
@@ -43,6 +46,6 @@ void CuentaCorriente::MostrarInfo() const{
     
     cout<<"Cuenta Corriente:"<<endl;
     cout<<"Titular de cuenta: "<<titularCuenta<<endl;
-    cout<<"Fondos: "<<balance<<endl;
+    cout<<"Fondos: "<<fondos<<endl;
 
 }

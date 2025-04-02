@@ -1,7 +1,7 @@
 /*
 4. Se tiene una clase abstracta que representa una cuenta de banco genérica. Esta clase 
 tiene los siguiente atributos y métodos: 
-i. balance: el total de la cuenta (tipo double). 
+i. balance: el total de la cuenta (tipo int). 
 ii. titularCuenta: nombre del dueño de la cuenta (string). 
 iii. depositar(): deposita una cantidad de dinero en la cuenta. 
 iv. retirar(): retira una cantidad de dinero de la cuenta (método virtual puro). 
@@ -17,15 +17,15 @@ consta del balance, el tipo de cuenta y el nombre del titular.
 
 class CuentaBanco{
     protected: //es protected para que enntonces las clases derivada spueden acceder a ellos
-        double balance;
+        mutable int balance;
         std::string titularCuenta;
     
     public:
-        CuentaBanco(std::string&)
-        virtual void Depositar(double&);
-        virtual double Retirar(double&) = 0;
+        CuentaBanco(std::string&);
+        virtual void Depositar(int&);
+        virtual int Retirar(int&) = 0;
         virtual void MostrarInfo() const = 0;
-        virtual ~CuentaBancaria() = default;
+        virtual ~CuentaBanco() = default;
 };
 
 //declaración de clases derivadas
@@ -35,20 +35,20 @@ class CajaDeAhorro: public CuentaBanco{
         mutable int contador_info; //es declarado atributo mutable, pues sera usado en un metodo const
     
     public:
-        CajaDeAhorro(std::string&)
-        double Retirar(double&) override;
+        CajaDeAhorro(std::string&);
+        int Retirar(int&) override;
         void MostrarInfo() const override;
 };
 
 class CuentaCorriente: public CuentaBanco{
     private:
-        double fondos;
+        int fondos;
         CajaDeAhorro* cajaAhorro;
     
     public:
-        CuentaCorriente(std::string&, CajaDeAhorro*)
-        virtual Depositar(double&) override;
-        double Retirar(double&) override;
+        CuentaCorriente(std::string&, CajaDeAhorro*);
+        void Depositar(int&) override;
+        int Retirar(int&) override;
         void MostrarInfo() const override;
     
     friend CajaDeAhorro;

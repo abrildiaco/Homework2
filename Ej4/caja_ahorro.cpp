@@ -19,10 +19,10 @@ CajaDeAhorro::CajaDeAhorro(string &Titular)
 
 //definición de metodos
 
-double CajaDeAhorro::Retirar(double& dinero_retirar){
+int CajaDeAhorro::Retirar(int& dinero_retirar){
     if (dinero_retirar > balance){
         throw out_of_range("No hay dinero suficuente en la cuenta");
-        return;
+        return 1;
     }
     balance -= dinero_retirar;
     cout<<"Retiro exitoso"<<endl;
