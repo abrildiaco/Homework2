@@ -35,13 +35,13 @@ string Entero::toString()const{
 }
 
 
-//destructor
-Entero::~Entero() {
-    //cout<<"se eliminó el entero "<<endl;
-}
+// //destructor
+// Entero::~Entero() {
+//     //cout<<"se eliminó el entero "<<endl;
+// }
 
-//destructor interfaz
+// //destructor interfaz
 
-Numero::~Numero(){
-    //cout<<"destructor numero"<<endl;
-}
+// Numero::~Numero(){
+//     //cout<<"destructor numero"<<endl;
+// }

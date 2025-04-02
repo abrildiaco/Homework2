@@ -36,6 +36,6 @@ string Complejo::toString()const{
     return numero_complejo.str();
 }
 
-Complejo::~Complejo(){
+// Complejo::~Complejo(){
 
-}
+// }

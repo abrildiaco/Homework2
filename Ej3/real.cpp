@@ -35,7 +35,7 @@ string Real::toString()const{
 }
 
 
-//destructor
-Real::~Real() {
-    //cout<<"se eliminó el Real "<<endl;
-}
+// //destructor
+// Real::~Real() {
+//     //cout<<"se eliminó el Real "<<endl;
+// }

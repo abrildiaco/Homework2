@@ -8,10 +8,7 @@ class Numero {
         virtual Numero* Suma(const Numero&) const = 0;
         virtual Numero* Resta(const Numero&) const = 0;
         virtual Numero* Multiplicacion(const Numero&) const = 0;
-        //virtual Numero* Division(const Numero&) const = 0;
         virtual std::string toString() const = 0;
-        
-        virtual ~Numero()=0 ;// Destructor virtual para evitar fugas de memoria
 };
 
 //declaración de clases derivadas
@@ -28,7 +25,7 @@ class Entero: public Numero{
         Numero* Division(const Numero&) const;
         std::string toString() const override;
         
-        ~Entero();
+        ~Entero() = default;
 };
 
 class Real: public Numero{
@@ -43,7 +40,7 @@ class Real: public Numero{
         Numero* Division(const Numero&) const;
         std::string toString() const override;
         
-        ~Real();
+        ~Real() = default;
 };
 
 class Complejo: public Numero{
@@ -58,5 +55,5 @@ class Complejo: public Numero{
         //Numero* Division(const Numero&) const override;
         std::string toString() const override;
         
-        ~Complejo();
+        ~Complejo() = default;
 };
