@@ -12,7 +12,7 @@ using namespace std;
 
 //constructor
 
-Estudiante::Estudiante(string NombreCompleto, const double Legajo)
+Estudiante::Estudiante(string NombreCompleto, const int Legajo)
     :nombre_completo(NombreCompleto), legajo(Legajo) {}
 
 
@@ -22,7 +22,7 @@ string Estudiante::getNombreCompleto()const{
     return nombre_completo;
 }
 
-const double Estudiante::getLegajo()const{
+const int Estudiante::getLegajo()const{
     return legajo;
 }
 
@@ -119,7 +119,7 @@ void Curso::DesinscribirAlumno(std::shared_ptr<Estudiante> &alumno){
     cout<<"No se encontró el alumno"<<endl;
 }  
 
-bool Curso::isInscripto(const double legajo_alumno)const{
+bool Curso::isInscripto(const int legajo_alumno)const{
     
     for(shared_ptr<Estudiante> estudiante: estudiantes){
         if (estudiante->getLegajo() == legajo_alumno) return true;
@@ -146,6 +146,13 @@ void Curso::ImprimirEstudiantes(){
 
 //definicion de simulkador
 
-void SimuladorCurso(Curso& curso_simular){
+void SimuladorCurso(Curso& curso_simular, int q_alumnos){
+
+    int legajo = 100;
+
+    for(int n = 1, n <= q_alumnos){
+        string nombre_alumno;
+        shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", legajo);
+    }
 
 }
