@@ -4,6 +4,7 @@
 
 //declaración de la interfaz
 class Numero {
+    //es una interfaz, pues todos sus métodos son virtuales puros, no tiene constructores ni atributos
     public:
         virtual Numero* Suma(const Numero&) const = 0;
         virtual Numero* Resta(const Numero&) const = 0;
@@ -52,7 +53,6 @@ class Complejo: public Numero{
         Numero* Suma(const Numero&) const override;
         Numero* Resta(const Numero&) const override;
         Numero* Multiplicacion(const Numero&) const override;
-        //Numero* Division(const Numero&) const override;
         std::string toString() const override;
         
         ~Complejo() = default;

@@ -33,15 +33,3 @@ Numero* Entero::Division(const Numero& otro) const{
 string Entero::toString()const{
     return to_string(entero);
 }
-
-
-// //destructor
-// Entero::~Entero() {
-//     //cout<<"se eliminó el entero "<<endl;
-// }
-
-// //destructor interfaz
-
-// Numero::~Numero(){
-//     //cout<<"destructor numero"<<endl;
-// }

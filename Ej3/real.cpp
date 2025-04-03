@@ -1,6 +1,7 @@
 #include "numero.h"
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 //constructor
@@ -34,8 +35,3 @@ string Real::toString()const{
     return to_string(real);
 }
 
-
-// //destructor
-// Real::~Real() {
-//     //cout<<"se eliminó el Real "<<endl;
-// }

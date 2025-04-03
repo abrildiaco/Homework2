@@ -35,7 +35,3 @@ string Complejo::toString()const{
     numero_complejo << real << signo << abs(imaginario) << "i";
     return numero_complejo.str();
 }
-
-// Complejo::~Complejo(){
-
-// }
