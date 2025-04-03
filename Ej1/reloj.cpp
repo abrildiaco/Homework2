@@ -204,7 +204,7 @@ void MenuMetodos(Reloj &MiReloj){
         cout<<"9 - Cambiar el período"<<endl;
         cout<<"10 - Mostrar el reloj en formato 24hs\n"<<endl;
         
-        cin>>opcion;
+        cout<<">>";cin>>opcion;
         cin.ignore();
 
         if(opcion == 0){
@@ -226,7 +226,7 @@ void MenuMetodos(Reloj &MiReloj){
 
                 int HH;
                 cout<<"Ingrese la nueva Hora: ";
-                cin>> HH;
+                cout<<">>";cin>> HH;
                 cin.ignore();
                 
                 try{
@@ -237,7 +237,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                     cout << "Error: " << e.what() << endl;
                     cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                    cin >> continuar;
+                    cout<<">>";cin >> continuar;
                     if (continuar == "no") return;
                     
                     continue;
@@ -254,7 +254,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                 int MM;
                 cout<<"Ingrese los nuevos minutos: ";
-                cin>> MM;
+                cout<<">>";cin>> MM;
                 cin.ignore();
                 
                 try{
@@ -264,7 +264,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                     cout << "Error: " << e.what() << endl;
                     cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                    cin >> continuar;
+                    cout<<">>";cin >> continuar;
                     if (continuar == "no") return;
                     
                     continue;
@@ -282,7 +282,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                 int SS;
                 cout<<"Ingrese los nuevos segundos: ";
-                cin>> SS;
+                cout<<">>";cin>> SS;
                 cin.ignore();
                 
                 try{
@@ -292,7 +292,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                     cout << "Error: " << e.what() << endl;
                     cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                    cin >> continuar;
+                    cout<<">>";cin >> continuar;
                     if (continuar == "no") return;
                     
                     continue;
@@ -307,7 +307,7 @@ void MenuMetodos(Reloj &MiReloj){
             while (continuar == "si"){
                 string PmAm;
                 cout<<"Ingrese el nuevo período (a.m./p.m.) ";
-                cin>> PmAm;
+                cout<<">>";cin>> PmAm;
                 
                 try{
                 MiReloj.CambiarPmAm(PmAm);
@@ -316,7 +316,7 @@ void MenuMetodos(Reloj &MiReloj){
                 
                     cout << "Error: " << e.what() << endl;
                     cout<<"\n ¿Desea volver a intentarlo? [si/no]";
-                    cin >> continuar;
+                    cout<<">>";cin >> continuar;
                     if (continuar == "no") return;
                     
                     continue;

@@ -16,7 +16,7 @@ int main() {
     cout<<"3 - Inicializar hora y minutos" <<endl;
     cout<<"4 - Inicializar horas, minutos y segundos"<<endl;
     cout<<"5 - Inicializar horas, minutos, segundos y período (am/pm)"<<endl;
-    cin>>opcion;
+    cout<<">>";cin>>opcion;
     cin.ignore();
     
     
@@ -36,7 +36,7 @@ int main() {
             
             int HH;
             cout<<"Ingrese una hora (0-12)"<<endl;
-            cin>> HH;
+            cout<<">>";cin>> HH;
             
             try{
                 Reloj MiReloj(HH);
@@ -47,7 +47,7 @@ int main() {
                 
                 cout << "Error: " << e.what() << endl;
                 cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                cin >> continuar;
+                cout<<">>";cin >> continuar;
                 
                 if (continuar == "no") return 1;
                 continue;
@@ -66,11 +66,11 @@ int main() {
                 
                 int HH;
                 cout<<"Ingrese una hora (0-12)"<<endl;
-                cin>> HH;
+                cout<<">>";cin>> HH;
 
                 int MM;
                 cout<<"Ingrese los minutos (0-59)"<<endl;
-                cin>> MM;
+                cout<<">>";cin>> MM;
 
                 try{
                 Reloj MiReloj(HH, MM);
@@ -81,7 +81,7 @@ int main() {
                     
                     cout << "Error: " << e.what() << endl;
                     cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                    cin >> continuar;
+                    cout<<">>";cin >> continuar;
                     
                     if (continuar == "no") return 1;
                     continue;
@@ -100,15 +100,15 @@ int main() {
             
             int HH;
             cout<<"Ingrese una hora (0-12)"<<endl;
-            cin>> HH;
+            cout<<">>";cin>> HH;
             
             int MM;
             cout<<"Ingrese los minutos (0-59)"<<endl;
-            cin>> MM;
+            cout<<">>";cin>> MM;
              
             int SS;
             cout<<"Ingrese los segundos (0-59)"<<endl;
-            cin>> SS;
+            cout<<">>";cin>> SS;
              
             try{
             Reloj MiReloj(HH, MM, SS);
@@ -118,7 +118,7 @@ int main() {
             catch (const exception& e) {
                 cout << "Error: " << e.what() << endl;
                 cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                cin >> continuar;
+                cout<<">>";cin >> continuar;
                 
                 if (continuar == "no") return 1;
                 continue;
@@ -136,20 +136,20 @@ int main() {
         while(continuar ==  "si"){
             
             int HH;
-            cout<<"Ingrese una hora (0-12)"<<endl;
+            cout<<">>";cout<<"Ingrese una hora (0-12)"<<endl;
             cin>> HH;
             
             int MM;
             cout<<"Ingrese los minutos (0-59)"<<endl;
-            cin>> MM;
+            cout<<">>";cin>> MM;
     
             int SS;
             cout<<"Ingrese los segundos (0-59)"<<endl;
-            cin>> SS;
+            cout<<">>";cin>> SS;
             
             string PmAm;
             cout<<"Ingrese el período (a.m./p.m.)"<<endl;
-            cin>> PmAm;      
+            cout<<">>";cin>> PmAm;      
             
             try{
             Reloj MiReloj(HH, MM, SS, PmAm);
@@ -159,7 +159,7 @@ int main() {
             catch (const exception& e) {
                 cout << "Error: " << e.what() << endl;
                 cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                cin >> continuar;
+                cout<<">>";cin >> continuar;
                 
                 if (continuar == "no") return 1;
                 continue;
