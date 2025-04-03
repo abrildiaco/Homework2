@@ -6,8 +6,51 @@ using namespace std;
 //g++ -std=c++20 main4.cpp cuenta_banco.cpp cuenta_corriente.cpp caja_ahorro.cpp -o main4
 
 int main(){
-    string nombre ="Abril diaco";
-    CajaDeAhorro miahorro(nombre);
+    
+    cout<<"=== Cuenta Bancaria ==="
+    
+    cout<<"\nPor favor cree una caja de ahorro: "<<endl;
+
+    string nombre_titular;
+    cout<<"Ingrese su nombre completo: ";
+    get_line(cin, nombre_titular);
+
+    CajaDeAhorro ahorro(nombre_titular);
+
+    int monto;
+    cout<<"Ingrese un primer monto a depositar: ";
+    cin>>monto;
+    cin.ignore();
+    
+    ahorro.Depositar(monto);
+
+    string continuar = "si";
+
+    cout<<"\n ¿Que acción desea realizar sobre su caja de ahorro? (presione 0 para salir)"
+    while(continuar = "si"){
+        
+        int opcion;
+        cout"1 - Depositar más dinero"<<endl;
+        cout"2 - Retirar dinero"<<endl;
+        cout"3 - Mostrar información de la cuenta"<<endl;
+        cout<<">>"; cin>>opcion;
+        cin.ignore()
+        
+        if (opcion == 0){
+            cou<<"\nGracias por confiar en nosotros!"<<endl;
+            break;
+        }
+        else if(opcion == 1){
+            int monto;
+            cout<<"Ingrese un monto a depositar: ";
+            cin>>monto;
+            cin.ignore();
+
+        }
+    }
+    
+    
+    cout<<"¿Desea también crear una cuenta corriente? [si/no]"
     int num1 = 3000; 
     int num2 = 2000;
     miahorro.Depositar(num1);
