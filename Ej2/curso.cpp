@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <random>
 
 using namespace std;
 
@@ -53,12 +54,10 @@ ostream& operator<<(ostream& os, const shared_ptr<Estudiante>& alumno){
 }
 
 
-//CLASE CURSO
-
 //Constructor
 
 Curso::Curso(const string &curso)
-    :capacidad(0), nombre_curso(curso){}
+    :capacidad(0), nombre_curso(curso){ cout << "curso "<<curso<<" creado con éxito"<<endl;}
 
 
 //Deep copy constructor
@@ -143,4 +142,10 @@ void Curso::ImprimirEstudiantes(){
     sort(estudiantes.begin(), estudiantes.end(), funcion_comparar); //ordena el vector de principio a fin en orden alfabetico
     
     for (shared_ptr<Estudiante> &estudiante: estudiantes ) cout << estudiante;
+}
+
+//definicion de simulkador
+
+void SimuladorCurso(Curso& curso_simular){
+
 }

@@ -8,6 +8,32 @@
 using namespace std;
 
 int main() {
+    
+    //programa para que un profesor arme su curso
+
+    cout<<"==== Bienvenido al campus de profesor de la carrera Ingeniería en IA ====\n"<<endl;
+    cout<<"Por favor, cargue el curso del que está a cargo:"<<endl;
+    
+    string cargar_curso = "si";
+
+    while(cargar_curso == "si"){
+
+        string nombre_curso;
+        cout<<"<<"; cin>>nombre_curso;
+
+        Curso curso(nombre_curso);
+
+        string cargar_alumno = "si";
+
+        cout<<"Por favor, cargue el curso del que está a cargo:"<<endl;
+
+        while(cargar_alumno == "si"){
+
+        }
+
+    }
+
+
     shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", 101);
     shared_ptr<Estudiante> e2 = make_shared<Estudiante>("Ana Gomez", 102);
     shared_ptr<Estudiante> e3 = make_shared<Estudiante>("Luis Fernandez", 103);

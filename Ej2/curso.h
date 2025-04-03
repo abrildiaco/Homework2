@@ -40,6 +40,8 @@ class Curso{
       bool isCompleto()const;
       void ImprimirEstudiantes();
 
+      void SimuladorCurso(Curso&); //función para crear un curso con estudiantes
+
 };
 
 /*
@@ -48,3 +50,4 @@ Es más, el curso no contiene estudiantes, sino punteros a ellos. Tambien, tiene
 ninguno sepende del otro: si el curso desaparece, los alumnos pueden buscar un nuevo curso, y si pasa al reves,
 ...
 */
+
