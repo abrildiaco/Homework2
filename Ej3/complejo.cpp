@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <memory>
 using namespace std;
 
 //constructor
@@ -10,21 +11,21 @@ Complejo::Complejo(double UnComplejo, double UnImaginario = 0)
 
 
 //definicion de métodos
-Numero* Complejo::Suma(const Numero& otro) const{
+std::unique_ptr<Numero> Complejo::Suma(const Numero& otro) const{
     const Complejo* otro_complejo = dynamic_cast<const Complejo*>(&otro);
-    return new Complejo( real + otro_complejo->real, imaginario + otro_complejo->imaginario);
+    return make_unique<Complejo>(real + otro_complejo->real, imaginario + otro_complejo->imaginario);
 }
 
-Numero* Complejo::Resta(const Numero& otro) const{
+std::unique_ptr<Numero> Complejo::Resta(const Numero& otro) const{
     const Complejo* otro_complejo = dynamic_cast<const Complejo*>(&otro);
-    return new Complejo( real - otro_complejo->real, imaginario - otro_complejo->imaginario);
+    return make_unique<Complejo>(real - otro_complejo->real, imaginario - otro_complejo->imaginario);
 }
 
 
-Numero* Complejo::Multiplicacion(const Numero& otro) const{
+std::unique_ptr<Numero> Complejo::Multiplicacion(const Numero& otro) const{
     const Complejo* otro_complejo = dynamic_cast<const Complejo*>(&otro);
     //multiplicación en complejos: (a+bi)×(c+di)=(ac−bd)+(ad+bc)i
-    return new Complejo( (real*otro_complejo->real - imaginario*otro_complejo->imaginario), (real*otro_complejo->imaginario + imaginario*otro_complejo->real));
+    return make_unique<Complejo>((real*otro_complejo->real - imaginario*otro_complejo->imaginario), (real*otro_complejo->imaginario + imaginario*otro_complejo->real));
 }
 
 

@@ -1,5 +1,7 @@
 #include "numero.h"
 #include <iostream>
+#include <memory>
+#include <string>
 
 using namespace std;
 
@@ -16,19 +18,19 @@ int main(){
     Entero num2(5);
     
     //suma
-    Numero* resultado_sum = num1.Suma(num2);
+    unique_ptr<Numero> resultado_sum = num1.Suma(num2);
     cout<<"Suma: "<<num1.toString()<<" + "<<num2.toString()<< " = " <<resultado_sum->toString()<<endl;
     
     //resta
-    Numero* resultado_res = num1.Resta(num2);
+    unique_ptr<Numero> resultado_res = num1.Resta(num2);
     cout<<"Resta: "<<num1.toString()<<" - "<<num2.toString()<< " = " <<resultado_res->toString()<<endl;
     
     //multiplicación
-    Numero* resultado_mul = num1.Multiplicacion(num2);
+    unique_ptr<Numero> resultado_mul = num1.Multiplicacion(num2);
     cout<<"Multiplicación: "<<num1.toString()<<" * "<<num2.toString()<< " = " <<resultado_mul->toString()<<endl;
     
     //división
-    Numero* resultado_div = num1.Division(num2);
+    unique_ptr<Numero> resultado_div = num1.Division(num2);
     cout<<"División: "<<num1.toString()<<" / "<<num2.toString()<< " = " <<resultado_div->toString()<<endl;
     }
 
@@ -39,19 +41,19 @@ int main(){
     Real num2(1.0/3.0);
     
     //suma
-    Numero* resultado_sum = num1.Suma(num2);
+    unique_ptr<Numero> resultado_sum = num1.Suma(num2);
     cout<<"Suma: "<<num1.toString()<<" + "<<num2.toString()<< " = " <<resultado_sum->toString()<<endl;
     
     //resta
-    Numero* resultado_res = num1.Resta(num2);
+    unique_ptr<Numero> resultado_res = num1.Resta(num2);
     cout<<"Resta: "<<num1.toString()<<" - "<<num2.toString()<< " = " <<resultado_res->toString()<<endl;
     
     //multiplicación
-    Numero* resultado_mul = num1.Multiplicacion(num2);
+    unique_ptr<Numero> resultado_mul = num1.Multiplicacion(num2);
     cout<<"Multiplicación: "<<num1.toString()<<" * "<<num2.toString()<< " = " <<resultado_mul->toString()<<endl;
     
     //división
-    Numero* resultado_div = num1.Division(num2);
+    unique_ptr<Numero> resultado_div = num1.Division(num2);
     cout<<"División: "<<num1.toString()<<" / "<<num2.toString()<< " = " <<resultado_div->toString()<<endl;
     }    
     
@@ -62,15 +64,15 @@ int main(){
     Complejo num2(5, 3);
     
     //suma
-    Numero* resultado_sum = num1.Suma(num2);
+    unique_ptr<Numero> resultado_sum = num1.Suma(num2);
     cout<<"Suma: ("<<num1.toString()<<") + ("<<num2.toString()<< ") = " <<resultado_sum->toString()<<endl;
     
     //resta
-    Numero* resultado_res = num1.Resta(num2);
+    unique_ptr<Numero> resultado_res = num1.Resta(num2);
     cout<<"Resta: ("<<num1.toString()<<") - ("<<num2.toString()<< ") = " <<resultado_res->toString()<<endl;
     
     //multiplicación
-    Numero* resultado_mul = num1.Multiplicacion(num2);
+    unique_ptr<Numero> resultado_mul = num1.Multiplicacion(num2);
     cout<<"Multiplicación: ("<<num1.toString()<<") * ("<<num2.toString()<< ") = " <<resultado_mul->toString()<<endl;
     }
     

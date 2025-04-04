@@ -1,14 +1,15 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 //declaración de la interfaz
 class Numero {
     //es una interfaz, pues todos sus métodos son virtuales puros, no tiene constructores ni atributos
     public:
-        virtual Numero* Suma(const Numero&) const = 0;
-        virtual Numero* Resta(const Numero&) const = 0;
-        virtual Numero* Multiplicacion(const Numero&) const = 0;
+        virtual std::unique_ptr<Numero> Suma(const Numero&) const = 0;
+        virtual std::unique_ptr<Numero> Resta(const Numero&) const = 0;
+        virtual std::unique_ptr<Numero> Multiplicacion(const Numero&) const = 0;
         virtual std::string toString() const = 0;
 };
 /*
@@ -25,10 +26,10 @@ class Entero: public Numero{
     
     public:
         Entero(int);
-        Numero* Suma(const Numero&) const override;
-        Numero* Resta(const Numero&) const override;
-        Numero* Multiplicacion(const Numero&) const override;
-        Numero* Division(const Numero&) const;
+        std::unique_ptr<Numero> Suma(const Numero&) const override;
+        std::unique_ptr<Numero> Resta(const Numero&) const override;
+        std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
+        std::unique_ptr<Numero> Division(const Numero&) const;
         std::string toString() const override;
         
         ~Entero() = default;
@@ -40,10 +41,10 @@ class Real: public Numero{
     
     public:
         Real(double);
-        Numero* Suma(const Numero&) const override;
-        Numero* Resta(const Numero&) const override;
-        Numero* Multiplicacion(const Numero&) const override;
-        Numero* Division(const Numero&) const;
+        std::unique_ptr<Numero> Suma(const Numero&) const override;
+        std::unique_ptr<Numero> Resta(const Numero&) const override;
+        std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
+        std::unique_ptr<Numero> Division(const Numero&) const;
         std::string toString() const override;
         
         ~Real() = default;
@@ -55,9 +56,9 @@ class Complejo: public Numero{
     
     public:
         Complejo(double, double);
-        Numero* Suma(const Numero&) const override;
-        Numero* Resta(const Numero&) const override;
-        Numero* Multiplicacion(const Numero&) const override;
+        std::unique_ptr<Numero> Suma(const Numero&) const override;
+        std::unique_ptr<Numero> Resta(const Numero&) const override;
+        std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
         std::string toString() const override;
         
         ~Complejo() = default;
