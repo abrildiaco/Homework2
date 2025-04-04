@@ -25,13 +25,17 @@ class Entero: public Numero{
         int entero;
     
     public:
+        //constructor
         Entero(int);
+
+        //metodos
         std::unique_ptr<Numero> Suma(const Numero&) const override;
         std::unique_ptr<Numero> Resta(const Numero&) const override;
         std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
         std::unique_ptr<Numero> Division(const Numero&) const;
         std::string toString() const override;
         
+        //destructor
         ~Entero() = default;
 };
 
@@ -40,7 +44,10 @@ class Real: public Numero{
         double real;
     
     public:
+        //constructor
         Real(double);
+        
+        //
         std::unique_ptr<Numero> Suma(const Numero&) const override;
         std::unique_ptr<Numero> Resta(const Numero&) const override;
         std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;

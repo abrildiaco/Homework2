@@ -4,7 +4,6 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
-#include <random>
 
 using namespace std;
 
@@ -32,14 +31,14 @@ float Estudiante::getPromedioGeneral()const{
     float suma = 0;
     int q_notas = notas.size();
     
-    for(const pair<string, float>& nota: notas) suma = suma + nota.second;
+    for(const pair<Curso, float>& nota: notas) suma = suma + nota.second;
 
     float promedio = suma/q_notas;
     return promedio;
 }
 
-void Estudiante::AgregarNota(const std::string& nombre_curso, float nota){
-    notas.push_back({nombre_curso, nota});
+void Estudiante::AgregarNota(const Curso& curso, float nota){
+    notas.push_back({curso, nota});
     return;
 }
 
@@ -146,13 +145,13 @@ void Curso::ImprimirEstudiantes(){
 
 //definicion de simulkador
 
-void SimuladorCurso(Curso& curso_simular, int q_alumnos){
+// void SimuladorCurso(Curso& curso_simular, int q_alumnos){
 
-    int legajo = 100;
+//     int legajo = 100;
 
-    for(int n = 1, n <= q_alumnos){
-        string nombre_alumno;
-        shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", legajo);
-    }
+//     for(int n = 1, n <= q_alumnos){
+//         string nombre_alumno;
+//         shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", legajo);
+//     }
 
-}
+// }

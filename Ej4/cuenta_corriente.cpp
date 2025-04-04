@@ -28,6 +28,11 @@ void CuentaCorriente::Depositar(int &dinero_depositar){
 }
 
 int CuentaCorriente::Retirar(int& dinero_retirar){
+    /*
+    si no hay suficiente dinero en la cuenta, extrae lo que puede de la cuenta corriente y
+    el resto de la caja de ahorro
+    */
+    
     if(dinero_retirar > fondos){
         fondos -= fondos;
         int retiro_ahorro = dinero_retirar-fondos;
