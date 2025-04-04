@@ -37,10 +37,10 @@ class Curso{
    public:   
       //constructores
       Curso(const std::string&);
-      //Curso(const Curso&);
+      Curso(const Curso&);
 
       //metodos
-      std::string getNombreCurso();
+      std::string getNombreCurso() const;
       void InscribirAlumno(std::shared_ptr<Estudiante>&, int);
       void DesinscribirAlumno(std::shared_ptr<Estudiante>&);
       bool isInscripto(const int) const;

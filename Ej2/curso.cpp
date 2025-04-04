@@ -31,7 +31,7 @@ float Estudiante::getPromedioGeneral()const{
     float suma = 0;
     int q_notas = notas.size();
     
-    for(const pair<Curso, float>& nota: notas) suma = suma + nota.second;
+    for(const pair<Curso, const float>& nota: notas) suma = suma + nota.second;
 
     float promedio = suma/q_notas;
     return promedio;
@@ -61,16 +61,16 @@ Curso::Curso(const string &curso)
 
 //Deep copy constructor
 
-// Curso::Curso(const Curso& original)
-//         :capacidad(original.capacidad), nombre_curso(original.nombre_curso){
-            
-//             //hago copia de los alumnos
-//             for (const shared_ptr<Estudiante>&estudiante: original.estudiantes ) {
-//                 estudiantes.push_back(make_shared<Estudiante>(estudiante->getNombreCompleto(), estudiante->getLegajo()));
+ Curso::Curso(const Curso& original)
+         :capacidad(original.capacidad), nombre_curso(original.nombre_curso){
+          
+             //hago copia de los alumnos
+             for (const shared_ptr<Estudiante>&estudiante: original.estudiantes ) {
+                 estudiantes.push_back(make_shared<Estudiante>(estudiante->getNombreCompleto(), estudiante->getLegajo()));
         
-//             }
-//         cout<<"Copia de curso hecha"<<endl;
-// }
+             }
+         cout<<"Copia de curso hecha"<<endl;
+ }
 /*
 hago uso de un deep copy constructor pues se trata de la copia de un objeto que contiene punteros.
 Lo que hice fue hacer una sobrecarga de constructores en la cual, si a un constructor se le pasa un objeto de
@@ -82,7 +82,7 @@ de no ser asi, si elimino un alumno de un curso, tambien se eliminaría del otro
 
 //Definción de métodos
 
-string Curso::getNombreCurso(){
+string Curso::getNombreCurso()const{
     return nombre_curso;
 }
 
