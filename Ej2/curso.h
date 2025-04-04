@@ -37,7 +37,7 @@ class Curso{
    public:   
       //constructores
       Curso(const std::string&);
-      Curso(const Curso&);
+      //Curso(const Curso&);
 
       //metodos
       std::string getNombreCurso();

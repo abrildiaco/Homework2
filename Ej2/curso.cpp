@@ -61,16 +61,16 @@ Curso::Curso(const string &curso)
 
 //Deep copy constructor
 
-Curso::Curso(const Curso& original)
-        :capacidad(original.capacidad), nombre_curso(original.nombre_curso){
+// Curso::Curso(const Curso& original)
+//         :capacidad(original.capacidad), nombre_curso(original.nombre_curso){
             
-            //hago copia de los alumnos
-            for (const shared_ptr<Estudiante>&estudiante: original.estudiantes ) {
-                estudiantes.push_back(make_shared<Estudiante>(estudiante->getNombreCompleto(), estudiante->getLegajo()));
+//             //hago copia de los alumnos
+//             for (const shared_ptr<Estudiante>&estudiante: original.estudiantes ) {
+//                 estudiantes.push_back(make_shared<Estudiante>(estudiante->getNombreCompleto(), estudiante->getLegajo()));
         
-            }
-        cout<<"Copia de curso hecha"<<endl;
-}
+//             }
+//         cout<<"Copia de curso hecha"<<endl;
+// }
 /*
 hago uso de un deep copy constructor pues se trata de la copia de un objeto que contiene punteros.
 Lo que hice fue hacer una sobrecarga de constructores en la cual, si a un constructor se le pasa un objeto de
