@@ -11,6 +11,11 @@ class Numero {
         virtual Numero* Multiplicacion(const Numero&) const = 0;
         virtual std::string toString() const = 0;
 };
+/*
+Se trabaja con punteros, pues, como la interfaz no puede ser instanciada, no podría existir
+ningun valor de tipo std::unique_ptr<Numero>, sino de alguna de sus derivadas. Sinembargo, todos lo métodos
+declarados devuelven número. Por ello, usamos punteros.
+*/
 
 //declaración de clases derivadas
 
