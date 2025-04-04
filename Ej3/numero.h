@@ -14,8 +14,8 @@ class Numero {
 };
 /*
 Se trabaja con punteros, pues, como la interfaz no puede ser instanciada, no podría existir
-ningun valor de tipo std::unique_ptr<Numero>, sino de alguna de sus derivadas. Sinembargo, todos lo métodos
-declarados devuelven número. Por ello, usamos punteros.
+ningun valor de tipo Numero, sino de alguna de sus derivadas. Sinembargo, todos lo métodos
+declarados devuelven Número. Por ello, usamos punteros, para no instanciar explicitamente a Numero
 */
 
 //declaración de clases derivadas
