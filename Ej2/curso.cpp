@@ -86,13 +86,16 @@ string Curso::getNombreCurso(){
     return nombre_curso;
 }
 
-void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno){
+void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno, int nota_alumno){
     if(capacidad == 20){
         cout<<"El curso "<<nombre_curso<<" no tiene más capacidad";
         return;
     }
     
     estudiantes.push_back(alumno);
+    
+    alumno->AgregarNota( *this, nota_alumno);
+    
     capacidad++;
     
     cout<<"El alumno "<<alumno->getNombreCompleto()<<" fue inscripto al curso "<<nombre_curso<<endl;
@@ -102,6 +105,7 @@ void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno){
 
 void Curso::DesinscribirAlumno(std::shared_ptr<Estudiante> &alumno){
     int pos = 0;
+    
     for(shared_ptr<Estudiante> estudiante: estudiantes){
         if (estudiante->getLegajo() == alumno->getLegajo()){
             

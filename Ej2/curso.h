@@ -10,7 +10,7 @@ class Estudiante{
     private:
       const std::string nombre_completo;
       const int legajo;
-      std::vector<std::pair<std::Curso, const float>> notas; //vector que contiene pares (curso, nota final)
+      std::vector<std::pair<Curso, const float>> notas; //vector que contiene pares (curso, nota final)
     
     public:
       //constructor
@@ -20,7 +20,7 @@ class Estudiante{
       std::string getNombreCompleto()const;
       const int getLegajo()const;
       float getPromedioGeneral()const;
-      void AgregarNota(const std::string&, float);
+      void AgregarNota(const Curso&, float);
 
       //sobreeescritura de operadores
       bool operator<(const Estudiante&);
@@ -41,11 +41,13 @@ class Curso{
 
       //metodos
       std::string getNombreCurso();
-      void InscribirAlumno(std::shared_ptr<Estudiante>&);
+      void InscribirAlumno(std::shared_ptr<Estudiante>&, int);
       void DesinscribirAlumno(std::shared_ptr<Estudiante>&);
       bool isInscripto(const int) const;
       bool isCompleto()const;
       void ImprimirEstudiantes();
+
+      friend Estudiante;
 
       //void SimuladorCurso(Curso&, int); //función para crear un curso con estudiantes
 

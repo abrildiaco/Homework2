@@ -7,31 +7,55 @@
 
 using namespace std;
 
+//g++ -std=c++20 main2.cpp curso.cpp -o main2 
+
 int main() {
     
     //programa para que un profesor arme su curso
 
-    cout<<"==== Bienvenido al campus de profesor de la carrera Ingeniería en IA ====\n"<<endl;
-    cout<<"Por favor, cargue el curso del que está a cargo:"<<endl;
+     cout<<"==== Bienvenido al campus de Administrador General de la carrera Ingeniería en IA ====\n"<<endl;
+     cout<<"Por favor, cargue los cuatro cursos de la carrera y a sus alumnos:"<<endl;
     
-    string cargar_curso = "si";
+     //carrera de cuatro cursoso
 
-    while(cargar_curso == "si"){
+     vector<Cursos> cursos_carrera(4);
 
+     string cargar_curso = "si";
+
+    for(int i = 0, i<4, 4++){
+
+        cout<<"\nIngrese el nombre del curso: ";
         string nombre_curso;
-        cout<<"<<"; cin>>nombre_curso;
+        getline(cin, nombre_curso);
 
         Curso curso(nombre_curso);
 
-        string cargar_alumno = "si";
+        
+        bool agregar = true
+        while (agregar){
+            cout<<"\nIngrese el nombre del alumno: ";
+            string nombre_alumno;
+            getline(cin, nombre_alumno);
+            
+            cout<<"\nIngrese el legajo del alumno: ";
+            int legajo;
+            cin>>legajo;
+            cin_igore(legajo);
 
-        cout<<"Por favor, cargue el curso del que está a cargo:"<<endl;
-
-        while(cargar_alumno == "si"){
-
+            shared_ptr<Estudiante> alumno = make_shared<Estudiante>(nombre_alumno, legajo);
+            
+            cout<<"\n¿Cual es la nota del alumno en el curso?: ";
+            int nota;
+            cin>>nota;
+            cin_igore(nota);            
+            
+            curso.InstribirAlumno(alumno, nota);
         }
-
+        
+        carrera_cursos.push_back(curso);
     }
+
+
 
 
     shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", 101);
@@ -43,7 +67,6 @@ int main() {
     curso.InscribirAlumno(e2);
     curso.InscribirAlumno(e3);
 
-
     cout << "Lista de estudiantes en orden alfabético:\n";
     curso.ImprimirEstudiantes();
     curso.DesinscribirAlumno(e1);
@@ -53,9 +76,9 @@ int main() {
     cout<< curso.isInscripto(102)<<endl;
     cout<< curso.isInscripto(1)<<curso.isCompleto()<<endl;
 
-    e1->AgregarNota("paradigmas", 10);
-    e1->AgregarNota("ciencias", 8);
-    e1->AgregarNota("ciencias", 10);
+    e1->AgregarNota(curso, 10);
+    // e1->AgregarNota("ciencias", 8);
+    // e1->AgregarNota("ciencias", 10);
     cout<<e1->getPromedioGeneral()<<endl;
 
     Curso curso2 = curso;
