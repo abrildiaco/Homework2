@@ -15,7 +15,7 @@ using namespace std;
 
 //constructor
 
-CuentaCorriente::CuentaCorriente(string &Titular, CajaDeAhorro* caja)
+CuentaCorriente::CuentaCorriente(string &Titular, shared_ptr<CajaDeAhorro> caja)
     :CuentaBanco::CuentaBanco(Titular), cajaAhorro(caja) {}
 
 
@@ -23,7 +23,7 @@ CuentaCorriente::CuentaCorriente(string &Titular, CajaDeAhorro* caja)
 
 void CuentaCorriente::Depositar(int &dinero_depositar){
     fondos += dinero_depositar;
-    cout<<"Dinero depositado exitosamente"<<endl;
+    cout<<"Dinero depositado exitosamente ("<<dinero_depositar<<")\n"<<endl;
     return;
 }
 
@@ -39,12 +39,13 @@ int CuentaCorriente::Retirar(int& dinero_retirar){
     }
     
     fondos -= dinero_retirar;
+    cout<<"Dinero retirado exitosamente ("<<dinero_retirar<<")\n"<<endl;
     return dinero_retirar;
 }
 
 void CuentaCorriente::MostrarInfo() const{
     
-    cout<<"Cuenta Corriente:"<<endl;
+    cout<<"=== Cuenta Corriente ==="<<endl;
     cout<<"Titular de cuenta: "<<titularCuenta<<endl;
     cout<<"Fondos: "<<fondos<<endl;
 

@@ -19,13 +19,19 @@ CajaDeAhorro::CajaDeAhorro(string &Titular)
 
 //definición de metodos
 
+void CajaDeAhorro::Depositar(int& dinero_depositar){
+    balance += dinero_depositar;
+    cout<<"Dinero depositado exitosamente ("<<dinero_depositar<<")\n"<<endl;
+    return;
+}
+
 int CajaDeAhorro::Retirar(int& dinero_retirar){
     if (dinero_retirar > balance){
         throw out_of_range("No hay dinero suficuente en la cuenta");
         return 1;
     }
     balance -= dinero_retirar;
-    cout<<"Retiro exitoso"<<endl;
+    cout<<"Retiro exitoso ("<<dinero_retirar<<")\n"<<endl;
     
     return dinero_retirar;
 }
@@ -33,7 +39,7 @@ int CajaDeAhorro::Retirar(int& dinero_retirar){
 void CajaDeAhorro::MostrarInfo() const{
     
     
-    cout<<"Caja de Ahorro:"<<endl;
+    cout<<"=== Caja de Ahorro ==="<<endl;
     cout<<"Titular de cuenta: "<<titularCuenta<<endl;
     cout<<"Balance: "<<balance<<endl;
     
@@ -44,7 +50,7 @@ void CajaDeAhorro::MostrarInfo() const{
         if(balance < 20) balance = 0;
         else balance -= 20;
 
-        cout<<"Se descontaron $20 de la cuenta por consultas frecuentes"<<endl;
+        cout<<"\nSe descontaron $20 de la cuenta por consultas frecuentes"<<endl;
 
     }
 

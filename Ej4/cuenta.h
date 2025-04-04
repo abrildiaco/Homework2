@@ -12,6 +12,7 @@ consta del balance, el tipo de cuenta y el nombre del titular.
 #pragma once
 
 #include <string>
+#include <memory>
 
 //declaración de clase abstracta
 
@@ -22,7 +23,7 @@ class CuentaBanco{
     
     public:
         CuentaBanco(std::string&);
-        virtual void Depositar(int&);
+        virtual void Depositar(int&) = 0;
         virtual int Retirar(int&) = 0;
         virtual void MostrarInfo() const = 0;
         virtual ~CuentaBanco() = default;
@@ -36,6 +37,7 @@ class CajaDeAhorro: public CuentaBanco{
     
     public:
         CajaDeAhorro(std::string&);
+        void Depositar(int&) override;
         int Retirar(int&) override;
         void MostrarInfo() const override;
 };
@@ -43,10 +45,10 @@ class CajaDeAhorro: public CuentaBanco{
 class CuentaCorriente: public CuentaBanco{
     private:
         int fondos;
-        CajaDeAhorro* cajaAhorro;
+        std::shared_ptr<CajaDeAhorro> cajaAhorro;
     
     public:
-        CuentaCorriente(std::string&, CajaDeAhorro*);
+        CuentaCorriente(std::string&, std::shared_ptr<CajaDeAhorro>);
         void Depositar(int&) override;
         int Retirar(int&) override;
         void MostrarInfo() const override;
