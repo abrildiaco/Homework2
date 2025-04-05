@@ -1,11 +1,3 @@
-/*
-CuentaCorriente: 
-• El método retirar() permite retirar dinero de la caja de ahorro si no existen 
-suficientes fondos en este tipo de cuenta. 
-• En caso de que la caja de ahorro tampoco tenga dinero, se imprimirá un aviso 
-de que la cuenta no posee dinero. Utilizar friend para esto.
-*/
-
 #include "cuenta.h"
 #include <string>
 #include <iostream>
@@ -41,7 +33,14 @@ int CuentaCorriente::Retirar(int& dinero_retirar){
         int retiro_ahorro = dinero_retirar-fondos;
         fondos -= fondos; //pongo en 0 los fondos
         
-        int retirados_ahorro = cajaAhorro->Retirar(retiro_ahorro);
+        //puedo acceder a los atributos private de caja de ahorro, pues utilice friend
+        if(cajaAhorro->balance > retiro_ahorro)
+            cajaAhorro->balance -= retiro_ahorro;
+        
+            else{
+            throw out_of_range("No hay dinero suficuente en la cuenta");
+            return 1;    
+        }
 
         cout<<"se han retirado fondos de la caja de ahorro"<<endl;
 

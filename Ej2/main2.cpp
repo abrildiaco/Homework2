@@ -6,8 +6,6 @@
 
 using namespace std;
 
-//g++ -std=c++20 main2.cpp curso.cpp estudiante.cpp -o main2 
-
 int main() {
     
     cout<<"\n==== Bienvenido al campus de Administrador General de la carrera Ingeniería en IA ====\n"<<endl;
