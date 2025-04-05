@@ -4,5 +4,7 @@
 
 using namespace std;
 
-CuentaBanco::CuentaBanco(string &Titular)
+//como es una clase abstracta, solo instancio el constructor
+
+CuentaBanco::CuentaBanco(const string &Titular)
     :titularCuenta(Titular), balance(0) {}

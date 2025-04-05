@@ -1,7 +1,6 @@
 #include "numero.h"
 #include <iostream>
 #include <string>
-#include <cmath>
 #include <memory>
 using namespace std;
 

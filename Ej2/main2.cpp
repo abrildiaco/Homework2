@@ -81,8 +81,8 @@ int main() {
             }
             catch (const exception& e) {
                 
-                cout << "Error: " << e.what() << endl;
-                cout<<"Vuelve a intenterlo.."<<endl;
+                cout << "\n===Error: " << e.what() << "==="<<endl;
+                cout<<"Vuelve a intenterlo..\n"<<endl;
                 continue;
             
             }

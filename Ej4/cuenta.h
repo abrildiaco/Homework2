@@ -22,7 +22,7 @@ class CuentaBanco{
         std::string titularCuenta;
     
     public:
-        CuentaBanco(std::string&);
+        CuentaBanco(const std::string&);
         virtual void Depositar(int&) = 0;
         virtual int Retirar(int&) = 0;
         virtual void MostrarInfo() const = 0;
@@ -36,7 +36,7 @@ class CajaDeAhorro: public CuentaBanco{
         mutable int contador_info; //es declarado atributo mutable, pues sera usado en un metodo const
     
     public:
-        CajaDeAhorro(std::string&);
+        CajaDeAhorro(const std::string&);
         void Depositar(int&) override;
         int Retirar(int&) override;
         void MostrarInfo() const override;
@@ -45,13 +45,13 @@ class CajaDeAhorro: public CuentaBanco{
 class CuentaCorriente: public CuentaBanco{
     private:
         int fondos;
-        std::shared_ptr<CajaDeAhorro> cajaAhorro;
+        std::unique_ptr<CajaDeAhorro> cajaAhorro;
     
     public:
-        CuentaCorriente(std::string&, std::shared_ptr<CajaDeAhorro>);
+        CuentaCorriente(const std::string&, std::unique_ptr<CajaDeAhorro>);
         void Depositar(int&) override;
         int Retirar(int&) override;
         void MostrarInfo() const override;
     
-    friend CajaDeAhorro;
+    //friend CajaDeAhorro;
 };

@@ -53,18 +53,16 @@ class Curso{
       //destructor
       ~Curso() = default;
 
-      friend Estudiante;
-
-      //void SimuladorCurso(Curso&, int); //función para crear un curso con estudiantes
+      //friend Estudiante;
 
 };
 
 /*
-El tipo de relacion entre curso y estudiante es agregación. El surso no es dueño del estudiante, o viceversa.
-Es más, el curso no contiene estudiantes, sino punteros a ellos. Tambien, tienen ciclos de vida separados,
-ninguno sepende del otro: si el curso desaparece, los alumnos pueden buscar un nuevo curso, y si pasa al reves,
-el curso sigue existiendo pero vacío. Sin embargo, podemos referirnos al curso como un "todo" y a los alumnos
+El tipo de relacion entre curso y estudiante es agregación. El curso no es dueño del estudiante, o viceversa.
+Ttienen ciclos de vida separados, ninguno depende del otro: si el curso desaparece, los alumnos pueden buscar un
+nuevo curso, y si pasa al reves, el curso sigue existiendo pero vacío.
+Ademas, podemos referirnos al curso como un "todo" y a los alumnos
 como sus "partes": los alumnos forman parte del curso. Hay una relacion mas estrecha entre ellos, pues el
-alumno necesita del curso para aprender y el curso necesita de los alumnos para poder iniciarse
+alumno necesita del curso para aprender y el curso necesita de los alumnos para poder funcionar
 */
 

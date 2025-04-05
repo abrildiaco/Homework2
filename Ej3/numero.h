@@ -47,13 +47,14 @@ class Real: public Numero{
         //constructor
         Real(double);
         
-        //
+        //metodos
         std::unique_ptr<Numero> Suma(const Numero&) const override;
         std::unique_ptr<Numero> Resta(const Numero&) const override;
         std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
         std::unique_ptr<Numero> Division(const Numero&) const;
         std::string toString() const override;
         
+        //destructor
         ~Real() = default;
 };
 
@@ -62,11 +63,15 @@ class Complejo: public Numero{
         double real, imaginario;
     
     public:
+        //constructor
         Complejo(double, double);
+
+        //metodos
         std::unique_ptr<Numero> Suma(const Numero&) const override;
         std::unique_ptr<Numero> Resta(const Numero&) const override;
         std::unique_ptr<Numero> Multiplicacion(const Numero&) const override;
         std::string toString() const override;
         
+        //destructor
         ~Complejo() = default;
 };

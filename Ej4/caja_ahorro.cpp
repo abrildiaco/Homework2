@@ -1,10 +1,3 @@
-/*
-CajaDeAhorro: 
-• El método retirar() impide retirar más dinero del que existe en el balance. 
-• Se realizará un descuento de $20 del balance luego de mostrar más de 2 veces 
-la información de la cuenta. 
-*/
-
 #include "cuenta.h"
 #include <string>
 #include <iostream>
@@ -14,18 +7,24 @@ using namespace std;
 
 //constructor
 
-CajaDeAhorro::CajaDeAhorro(string &Titular)
+CajaDeAhorro::CajaDeAhorro(const string &Titular)
     :CuentaBanco::CuentaBanco(Titular) {}
 
 //definición de metodos
 
 void CajaDeAhorro::Depositar(int& dinero_depositar){
+    if (dinero_depositar <= 0)
+        throw invalid_argument("El monto a depositar debe ser positivo.");
+    
     balance += dinero_depositar;
     cout<<"Dinero depositado exitosamente ("<<dinero_depositar<<")\n"<<endl;
     return;
 }
 
 int CajaDeAhorro::Retirar(int& dinero_retirar){
+    if (dinero_retirar <= 0)
+        throw invalid_argument("El monto a retirar debe ser positivo.");
+
     if (dinero_retirar > balance){
         throw out_of_range("No hay dinero suficuente en la cuenta");
         return 1;
@@ -38,12 +37,11 @@ int CajaDeAhorro::Retirar(int& dinero_retirar){
 
 void CajaDeAhorro::MostrarInfo() const{
     
-    
     cout<<"=== Caja de Ahorro ==="<<endl;
     cout<<"Titular de cuenta: "<<titularCuenta<<endl;
     cout<<"Balance: "<<balance<<endl;
     
-    contador_info++;
+    contador_info++; 
 
     if (contador_info > 2){
 

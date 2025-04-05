@@ -32,5 +32,5 @@ std::unique_ptr<Numero> Entero::Division(const Numero& otro) const{
 }
 
 string Entero::toString()const{
-    return to_string(entero);
+    return to_string(entero); //uso el método propio de string
 }
