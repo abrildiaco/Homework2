@@ -58,7 +58,6 @@ ostream& operator<<(ostream& os, const shared_ptr<Estudiante>& alumno){
 Curso::Curso(const string &curso)
     :capacidad(0), nombre_curso(curso){ cout << "curso "<<curso<<" creado con éxito"<<endl;}
 
-
 //Deep copy constructor
 
  Curso::Curso(const Curso& original)
@@ -69,7 +68,6 @@ Curso::Curso(const string &curso)
                  estudiantes.push_back(make_shared<Estudiante>(estudiante->getNombreCompleto(), estudiante->getLegajo()));
         
              }
-         cout<<"Copia de curso hecha"<<endl;
  }
 /*
 hago uso de un deep copy constructor pues se trata de la copia de un objeto que contiene punteros.
@@ -90,6 +88,10 @@ void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno, int nota_alumno){
     if(capacidad == 20){
         cout<<"El curso "<<nombre_curso<<" no tiene más capacidad";
         return;
+    }
+    for (const shared_ptr<Estudiante>&estudiante: estudiantes ) {
+        if (estudiante->getLegajo() == alumno ->getLegajo()) throw invalid_argument("El numero de legajo ya existe");
+
     }
     
     estudiantes.push_back(alumno);
