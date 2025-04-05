@@ -2,12 +2,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 #include <memory>
 
 using namespace std;
 
-//g++ -std=c++20 main2.cpp curso.cpp -o main2 
+//g++ -std=c++20 main2.cpp curso.cpp estudiante.cpp -o main2 
 
 int main() {
     

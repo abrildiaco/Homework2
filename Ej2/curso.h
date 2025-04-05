@@ -26,6 +26,9 @@ class Estudiante{
       bool operator<(const Estudiante&);
       friend std::ostream& operator<<(std::ostream&, const std::shared_ptr<Estudiante>&);
 
+      //destructor
+      ~Estudiante() = default; //le digo explicitamente al compilador que cree un destructor
+
 };
 
 class Curso{
@@ -46,6 +49,9 @@ class Curso{
       bool isInscripto(const int) const;
       bool isCompleto()const;
       void ImprimirEstudiantes();
+
+      //destructor
+      ~Curso() = default;
 
       friend Estudiante;
 

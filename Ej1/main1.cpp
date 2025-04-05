@@ -58,39 +58,39 @@ int main() {
         }
     } 
 
-        //Inicialización con la hora y los minutos
-        else if(opcion == 3){
-            string continuar = "si";
+    //Inicialización con la hora y los minutos
+    else if(opcion == 3){
+        string continuar = "si";
+        
+        while(continuar ==  "si"){
             
-            while(continuar ==  "si"){
-                
-                int HH;
-                cout<<"Ingrese una hora (0-12)"<<endl;
-                cout<<">>";cin>> HH;
+            int HH;
+            cout<<"Ingrese una hora (0-12)"<<endl;
+            cout<<">>";cin>> HH;
 
-                int MM;
-                cout<<"Ingrese los minutos (0-59)"<<endl;
-                cout<<">>";cin>> MM;
+            int MM;
+            cout<<"Ingrese los minutos (0-59)"<<endl;
+            cout<<">>";cin>> MM;
 
-                try{
-                Reloj MiReloj(HH, MM);
-                MenuMetodos(MiReloj); 
-                }
-                
-                catch (const exception& e) {
-                    
-                    cout << "Error: " << e.what() << endl;
-                    cout<<"\n¿Desea volver a intentarlo? [si/no]";
-                    cout<<">>";cin >> continuar;
-                    
-                    if (continuar == "no") return 1;
-                    continue;
-                }
-                
-                continuar = "no";
+            try{
+            Reloj MiReloj(HH, MM);
+            MenuMetodos(MiReloj); 
             }
-        } 
-    
+            
+            catch (const exception& e) {
+                
+                cout << "Error: " << e.what() << endl;
+                cout<<"\n¿Desea volver a intentarlo? [si/no]";
+                cout<<">>";cin >> continuar;
+                
+                if (continuar == "no") return 1;
+                continue;
+            }
+            
+            continuar = "no";
+        }
+    } 
+
      //Inicialización con la hora, minutos y segundos
      else if(opcion == 4){
          

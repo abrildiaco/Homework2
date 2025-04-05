@@ -32,6 +32,9 @@ class Reloj{
         void CambiarPmAm(std::string);
 
         void Show24()const;
+
+        //destructor
+        ~Reloj() = default; //le digo explicitamente al compilador que cree un destructor
 };
 
 //CAMBIAR A STATIC
