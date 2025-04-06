@@ -7,7 +7,7 @@
 class CuentaCorriente;
 
 class CuentaBanco{
-    protected: //es protected para que enntonces las clases derivada spueden acceder a ellos
+    protected: //es protected para que enntonces las clases derivadas pueden acceder a los atributos
         mutable int balance;
         std::string titularCuenta;
     
@@ -21,7 +21,7 @@ class CuentaBanco{
 
 //declaración de clases derivadas
 
-class CajaDeAhorro: public CuentaBanco{
+class CajaDeAhorro: public CuentaBanco{ //hereredo los metodos y los atributos de manera public, para poder acceder a ellos
     private:
         mutable int contador_info; //es declarado atributo mutable, pues sera usado en un metodo const
     
@@ -42,8 +42,7 @@ class CajaDeAhorro: public CuentaBanco{
 
 class CuentaCorriente: public CuentaBanco{
     private:
-        int fondos;
-        std::unique_ptr<CajaDeAhorro> cajaAhorro;
+        std::unique_ptr<CajaDeAhorro> cajaAhorro; //tengo acceso a la caja de ahorros
     
     public:
         //constructor    

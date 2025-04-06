@@ -16,7 +16,7 @@ void CuentaCorriente::Depositar(int &dinero_depositar){
     if (dinero_depositar <= 0)
         throw invalid_argument("El monto a depositar debe ser positivo.");
     
-    fondos += dinero_depositar;
+    balance += dinero_depositar;
     cout<<"Dinero depositado exitosamente ("<<dinero_depositar<<")\n"<<endl;
     return;
 }
@@ -29,9 +29,9 @@ int CuentaCorriente::Retirar(int& dinero_retirar){
     if (dinero_retirar <= 0)
         throw invalid_argument("El monto a retirar debe ser positivo.");
     
-    if(dinero_retirar > fondos){
-        int retiro_ahorro = dinero_retirar-fondos;
-        fondos -= fondos; //pongo en 0 los fondos
+    if(dinero_retirar > balance){
+        int retiro_ahorro = dinero_retirar-balance;
+        balance = 0; //pongo en 0 los fondos
         
         //puedo acceder a los atributos private de caja de ahorro, pues utilice friend
         if(cajaAhorro->balance > retiro_ahorro)
@@ -47,15 +47,15 @@ int CuentaCorriente::Retirar(int& dinero_retirar){
         return dinero_retirar;
     }
     
-    fondos -= dinero_retirar;
+    balance -= dinero_retirar;
     cout<<"Dinero retirado exitosamente ("<<dinero_retirar<<")\n"<<endl;
     return dinero_retirar;
 }
 
 void CuentaCorriente::MostrarInfo() const{
     
-    cout<<"=== Cuenta Corriente ==="<<endl;
+    cout<<"\n=== Cuenta Corriente ==="<<endl;
     cout<<"Titular de cuenta: "<<titularCuenta<<endl;
-    cout<<"Fondos: "<<fondos<<endl;
+    cout<<"Fondos: "<<balance<<endl;
 
 }
