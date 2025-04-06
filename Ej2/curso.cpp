@@ -38,7 +38,7 @@ string Curso::getNombreCurso()const{
     return nombre_curso;
 }
 
-void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno, const int &nota_alumno){
+void Curso::InscribirAlumno(shared_ptr<Estudiante> &alumno, const float &nota_alumno){
     if(capacidad == 20){
         cout<<"El curso "<<nombre_curso<<" no tiene más capacidad";
         return;

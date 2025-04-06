@@ -44,7 +44,7 @@ class Curso{
 
       //metodos
       std::string getNombreCurso() const;
-      void InscribirAlumno(std::shared_ptr<Estudiante>&, const int&);
+      void InscribirAlumno(std::shared_ptr<Estudiante>&, const float&);
       void DesinscribirAlumno(const int&);
       bool isInscripto(const int) const;
       bool isCompleto()const;

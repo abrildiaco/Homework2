@@ -66,7 +66,10 @@ int main() {
             int num_curso;
             cout<<">>"; cin>>num_curso;
             cin.ignore();
-            
+            if (num_curso > 2){
+                cout<<"No existe el numero de curso. Intentelo de nuevo"<<endl;
+                continue;
+            }
             try{
                         
                 cout<<"\n¿Cual es la nota del alumno en el curso?: ";
@@ -84,6 +87,7 @@ int main() {
                 continue;
             
             }
+            
             string respuesta;
             cout<<"\n¿Desea inscribirlo a otro curso? [si/no]: ";
             getline(cin, respuesta);
@@ -128,7 +132,7 @@ int main() {
     bool continuar = true;
     while(continuar){
 
-        cout<<"\n ¿Que accion desea realizar? (presione 0 para salir)"<<endl;
+        cout<<"\n¿Que accion desea realizar? (presione 0 para salir)"<<endl;
         cout<<"1 - Desinscribir alumno"<<endl;
         cout<<"2 - Ver si un alumno esta inscripto"<<endl;
         cout<<"3 - Ver si el curso esta completo"<<endl;
