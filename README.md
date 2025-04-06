@@ -25,7 +25,7 @@ g++ -std=c++20 main1.cpp reloj.cpp -o main1
 
 ### -Ej2:
 
-g++ -std=c++20 main2.cpp curso.cpp -o main1
+g++ -std=c++20 main2.cpp curso.cpp estudiante.cpp -o main2
 
 ./main2
 
