@@ -70,7 +70,7 @@ int main() {
             try{
                         
                 cout<<"\n¿Cual es la nota del alumno en el curso?: ";
-                int nota;
+                float nota;
                 cin>>nota;
                 cin.ignore();            
                 

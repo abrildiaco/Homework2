@@ -103,15 +103,3 @@ void Curso::ImprimirEstudiantes(){
     for (shared_ptr<Estudiante> &estudiante: estudiantes ) cout << estudiante;
 }
 
-//definicion de simulkador
-
-// void SimuladorCurso(Curso& curso_simular, int q_alumnos){
-
-//     int legajo = 100;
-
-//     for(int n = 1, n <= q_alumnos){
-//         string nombre_alumno;
-//         shared_ptr<Estudiante> e1 = make_shared<Estudiante>("Juan Perez", legajo);
-//     }
-
-// }
